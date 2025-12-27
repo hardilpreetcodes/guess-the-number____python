@@ -1,20 +1,27 @@
 # Number Guessing Game 🎯
 
-A simple Python command-line game where the user tries to guess a randomly generated number.
+import random
 
-## How the Game Works
-- The program generates a random number between 1 and 100
-- The user guesses the number
-- The program gives hints: too high or too low
-- The game ends when the correct number is guessed
+secret_number = random.randint(1, 100)
+attempts = 0
 
-## Concepts Used
-- Variables
-- Loops
-- Conditional statements
-- Random module
-- User input
+print("Welcome to the Number Guessing Game!")
+print("Guess a number between 1 and 100")
 
-## How to Run
-```bash
-python number_guessing_game.py
+while True:
+    guess = input("Enter your guess: ")
+
+    if not guess.isdigit():
+        print("Please enter a valid number.")
+        continue
+
+    guess = int(guess)
+    attempts += 1
+
+    if guess < secret_number:
+        print("Too low!")
+    elif guess > secret_number:
+        print("Too high!")
+    else:
+        print("Congratulations! You guessed the number in {attempts} attempts.")
+        break
